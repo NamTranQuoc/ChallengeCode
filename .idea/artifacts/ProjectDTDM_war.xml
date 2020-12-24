@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProjectDTDM:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ProjectDTDM</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ProjectDTDM-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ProjectDTDM:war exploded" />
+    </root>
+  </artifact>
+</component>
