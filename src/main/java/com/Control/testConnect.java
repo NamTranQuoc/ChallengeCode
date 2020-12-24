@@ -15,6 +15,7 @@ public class testConnect {
     * Java SSH Connection Program
     */
    public static void main(String[] args) {
+      /*
       String host="13.59.25.143";
       String user="ubuntu";
       String password="123456a@";
@@ -64,5 +65,47 @@ public class testConnect {
       }catch(Exception e){
          e.printStackTrace();
       }
+       */
+      GetNamespace("class HelloWorld {\n" +
+              "    public static void main( String []args ) {\n" +
+              "        System.out.println( \"Hello World!\" );\n" +
+              "    }\n" +
+              "}");
+   }
+
+   public static String GetNamespace(String code) {
+      String namespace = "";
+      char tempt = '{';
+      int end = -1, start = -1;
+      for (int i = 0; i < code.length(); i++) {
+
+         if (code.charAt(i) == tempt) {
+
+            for (int j = i - 1; j >= 0; j--) {
+               if (code.charAt(j) != ' ') {
+                  end = j;
+                  break;
+               }
+            }
+            for (int j = end - 1; j >= 0; j--) {
+               if (code.charAt(j) == ' ') {
+                  start = j + 1;
+                  break;
+               }
+            }
+            break;
+         }
+      }
+      if (start == -1 || end == -1)
+         return code;
+      String Doan1 = "";
+      String Doan2 = "";
+      String full = "";
+      Doan1 = code.substring(0, start);
+      Doan2 = code.substring(end + 1);
+      full = Doan1 + " Main " + Doan2;
+      namespace = code.substring(start, end + 1);
+      System.out.println(full);
+      return namespace;
    }
 }

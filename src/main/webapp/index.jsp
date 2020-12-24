@@ -13,7 +13,7 @@
   <form action="compile" method="POST">
     <div class="content">
       <div class="content__top">
-        <textarea name="code" id="code"><c:out value='${RequestClass.getContent()}'/></textarea>
+        <textarea name="code" id="code"><c:out value='${code}'/></textarea>
       </div>
       <div class="content__middle">
         <span id="btn__compiler">

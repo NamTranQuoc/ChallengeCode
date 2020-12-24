@@ -19,6 +19,7 @@ public class Main extends HttpServlet {
         RequestClass requestClass = new RequestClass(code, language);
 
         request.setAttribute("RequestClass", requestClass);
+        request.setAttribute("code", code);
 
         //String result = "language: " + requestClass.getLanguage() + "\ncode:\n" + requestClass.getContent();
         String result = "";

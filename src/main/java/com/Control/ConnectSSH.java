@@ -29,11 +29,11 @@ public class ConnectSSH {
 
 
       if (requestClass.getLanguage().equals("Java")){
-         command1="sudo rm data/Main.class\nsudo docker exec javacompile bash /data/compilejava.sh";
+         command1="sudo docker exec javacompile bash /data/compilejava.sh";
          pathServer = "data/Main.java";
       }
       else {
-         command1 = "sudo rm data/Main.exe\nsudo docker exec c3compile bash /data/compilec3.sh";
+         command1 = "sudo docker exec c3compile bash /data/compilec3.sh";
          pathServer = "data/Main.cs";
       }
 
@@ -47,9 +47,16 @@ public class ConnectSSH {
          session.setConfig(config.get());
          session.connect();
 
+         //upload file
          ChannelSftp channelSftp = (ChannelSftp) session.openChannel("sftp");
          channelSftp.connect();
-         channelSftp.put(new ByteArrayInputStream(requestClass.getContent().getBytes()), pathServer);
+         if (requestClass.getLanguage().equals("Java")){
+            String code = getInstance().GetNamespace(requestClass.getContent());
+            channelSftp.put(new ByteArrayInputStream(code.getBytes()), pathServer);
+         }
+         else {
+            channelSftp.put(new ByteArrayInputStream(requestClass.getContent().getBytes()), pathServer);
+         }
          channelSftp.exit();
 
          Channel channel=session.openChannel("exec");
@@ -81,5 +88,34 @@ public class ConnectSSH {
       }
 
       return result;
+   }
+
+   public String GetNamespace(String code) {
+      int end = -1, start = -1;
+      for (int i = 0; i < code.length(); i++) {
+
+         if (code.charAt(i) == '{') {
+            for (int j = i - 1; j >= 0; j--) {
+               if (code.charAt(j) != ' ') {
+                  end = j;
+                  break;
+               }
+            }
+            for (int j = end - 1; j >= 0; j--) {
+               if (code.charAt(j) == ' ') {
+                  start = j + 1;
+                  break;
+               }
+            }
+            break;
+         }
+      }
+      if(end == -1 || start == -1)
+         return code;
+      String Doan1 = code.substring(0, start);
+      String Doan2 = code.substring(end+1);
+      String Full = Doan1 + " Main " + Doan2;
+      System.out.println(Full);
+      return Full;
    }
 }
