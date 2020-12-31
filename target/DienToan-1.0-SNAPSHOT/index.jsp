@@ -6,13 +6,14 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+<form id="compile-form" method="post">
     <div class="content">
         <div class="content__top">
             <div id="editor"></div>
         </div>
         <div class="content__middle">
             <span id="btn__compiler">
-                <button id="compile" onclick="run()">RUN</button>
+              <input type="submit" name="compile" id="btn-compile" value="RUN"">
             </span>
                 <span id="select__language">
               <select name="language">
@@ -25,9 +26,23 @@
             <textarea name="result" id="result" readonly><c:out value='${result}'/></textarea>
         </div>
     </div>
+</form>
 
 <script src="js/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/ext-language_tools.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#btn-compile').click(function() {
+      $.ajax({
+        type:"GET",
+        url:"compile",
+        data: {
+          code: console.log().editor.getValue()
+        }
+      })
+    });
+  });
+</script>
 <script>
     ace.require("ace/ext/language_tools");
     var editor = ace.edit("editor");
@@ -39,18 +54,6 @@
       enableSnippets: true,
       enableLiveAutocompletion: true
     });
-</script>
-<script>
-  function run(e) {
-    $ajax({
-      type: "POST",
-      data: {
-        code: e.editor.getValue(),
-        language: e.language
-      },
-      url: "/compile"
-    })
-  }
 </script>
 </body>
 </html>

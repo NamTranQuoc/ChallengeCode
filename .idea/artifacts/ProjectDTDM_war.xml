@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="DienToan:war">
+  <artifact type="war" name="ProjectDTDM:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>DienToan</module>
+        <module>ProjectDTDM</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="archive" name="DienToan-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="DienToan:war exploded" />
+      <element id="artifact" artifact-name="ProjectDTDM:war exploded" />
     </root>
   </artifact>
 </component>
