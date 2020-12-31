@@ -1,0 +1,45 @@
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 30%;
+    left: 30%;
+}
+
+.content__bottom {
+    position: absolute;
+    top: 75%;
+    right: 0;
+    bottom: 0;
+    left: 30%;
+}
+
+#result {
+    width: 99%;
+    height: 97%;
+    background: black;
+    color: aliceblue;
+}
+
+.content__middle {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    bottom: 30%;
+    left: 30%;
+}
+
+content__middle span {
+    height: 100%;
+    width: 20%;
+}
+
+#btn__compiler {
+    height: 100%;
+    width: 100%;
+}
+
+#select__language {
+    height: 100%;
+    width: 100%;
+}
