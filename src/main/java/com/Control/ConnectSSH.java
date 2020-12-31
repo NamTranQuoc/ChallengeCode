@@ -1,7 +1,8 @@
-package com.Control;
+package com.control;
 
-import com.Model.RequestClass;
+
 import com.jcraft.jsch.*;
+import com.model.RequestClass;
 
 import java.io.*;
 import java.util.Properties;

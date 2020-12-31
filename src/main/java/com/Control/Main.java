@@ -1,6 +1,6 @@
-package com.Control;
+package com.control;
 
-import com.Model.RequestClass;
+import com.model.RequestClass;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class Main extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
+   }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String code = request.getParameter("code");
-        String language = request.getParameter("language");
-        RequestClass requestClass = new RequestClass(code, language);
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String code = request.getParameter("code");
+      String language = request.getParameter("language");
+      RequestClass requestClass = new RequestClass(code, language);
 
-        request.setAttribute("RequestClass", requestClass);
-        request.setAttribute("code", code);
+      request.setAttribute("RequestClass", requestClass);
+      request.setAttribute("code", code);
 
-        //String result = "language: " + requestClass.getLanguage() + "\ncode:\n" + requestClass.getContent();
-        String result = "";
-        result = ConnectSSH.getInstance().ExecuteCmd(requestClass);
-        request.setAttribute("result", result);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-    }
+      //String result = "language: " + requestClass.getLanguage() + "\ncode:\n" + requestClass.getContent();
+      String result = "";
+      result = ConnectSSH.getInstance().ExecuteCmd(requestClass);
+      request.setAttribute("result", result);
+      getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+   }
 }

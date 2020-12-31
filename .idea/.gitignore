@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../:\DTDM\code\ProjectDTDM\.idea/dataSources/
+/../../../../:\Do_An_Mon_Hoc\DienToan\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
