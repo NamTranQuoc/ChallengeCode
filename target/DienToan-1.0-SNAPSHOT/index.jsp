@@ -12,15 +12,15 @@
             <div id="editor">${code}</div>
         </div>
         <div class="content__middle">
-            <span id="btn__compiler">
+            <div>
               <input type="submit" name="compile" id="btn-compile" value="RUN">
-            </span>
-                <span id="select__language">
+            </div>
+            <div>
               <select name="language", id="language">
                 <option value="C#">C#</option>
                 <option value="Java">Java</option>
               </select>
-            </span>
+            </div>
         </div>
         <div class="content__bottom">
             <textarea name="result" id="result" readonly>${result}</textarea>
@@ -57,9 +57,6 @@
         },
         success: function (data) {
           $('#result').val(data.toString())
-        },
-        waiting: function () {
-          alert(Compile);
         }
       })
     });
