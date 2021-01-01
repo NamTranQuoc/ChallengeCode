@@ -2,7 +2,6 @@ package com.control;
 
 
 import com.jcraft.jsch.*;
-import com.model.RequestClass;
 
 import java.io.*;
 import java.util.Properties;
@@ -19,7 +18,7 @@ public class ConnectSSH {
 
    private ConnectSSH () {}
 
-   public String ExecuteCmd (RequestClass requestClass) {
+   public String ExecuteCmd (String content, String language) {
       String result = "";
 
       String host="13.59.25.143";
@@ -29,7 +28,7 @@ public class ConnectSSH {
       String pathServer;
 
 
-      if (requestClass.getLanguage().equals("Java")){
+      if (language.equals("Java")){
          command1="sudo docker exec javacompile bash /data/compilejava.sh";
          pathServer = "data/Main.java";
       }
@@ -51,12 +50,12 @@ public class ConnectSSH {
          //upload file
          ChannelSftp channelSftp = (ChannelSftp) session.openChannel("sftp");
          channelSftp.connect();
-         if (requestClass.getLanguage().equals("Java")){
-            String code = getInstance().GetNamespace(requestClass.getContent());
+         if (language.equals("Java")){
+            String code = getInstance().GetNamespace(content);
             channelSftp.put(new ByteArrayInputStream(code.getBytes()), pathServer);
          }
          else {
-            channelSftp.put(new ByteArrayInputStream(requestClass.getContent().getBytes()), pathServer);
+            channelSftp.put(new ByteArrayInputStream(content.getBytes()), pathServer);
          }
          channelSftp.exit();
 

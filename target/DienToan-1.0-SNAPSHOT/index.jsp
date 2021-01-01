@@ -9,21 +9,21 @@
 <form id="compile-form">
     <div class="content">
         <div class="content__top">
-            <div id="editor"><c:out value='${code}'/></div>
+            <div id="editor">${code}</div>
         </div>
         <div class="content__middle">
             <span id="btn__compiler">
               <input type="submit" name="compile" id="btn-compile" value="RUN">
             </span>
                 <span id="select__language">
-              <select name="language">
+              <select name="language", id="language">
                 <option value="C#">C#</option>
                 <option value="Java">Java</option>
               </select>
             </span>
         </div>
         <div class="content__bottom">
-            <textarea name="result" id="result" readonly><c:out value='${result}'/></textarea>
+            <textarea name="result" id="result" readonly>${result}</textarea>
         </div>
     </div>
 </form>
@@ -45,16 +45,21 @@
 </script>
 <script>
   $(document).ready(function() {
-    $('#btn-compile').click(function() {
+    $('#btn-compile').click(function(e) {
+      e.preventDefault();
+
       $.ajax({
-        method:"GET",
+        method:"POST",
         url:"/compile",
         data: {
           code: editor.getValue(),
-          language: 'C#'
+          language: $('#language').val()
         },
-        success: function (code) {
-          editor.setValue(code)
+        success: function (data) {
+          $('#result').val(data.toString())
+        },
+        waiting: function () {
+          alert(Compile);
         }
       })
     });
