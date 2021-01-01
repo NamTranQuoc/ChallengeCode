@@ -7,6 +7,9 @@
 </head>
 <body>
 <form id="compile-form">
+    <div id="exercise">
+
+    </div>
     <div class="content">
         <div class="content__top">
             <div id="editor">${code}</div>

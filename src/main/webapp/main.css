@@ -34,7 +34,7 @@
     left: 30%;
     display: flex;
     flex-direction: row;
-    background-color: #6d6d6d;
+    background-color: #383838;
 }
 
 .content__middle > div {
@@ -46,9 +46,22 @@
 #btn-compile {
     width: 100%;
     font-size: 120%;
+    background-color: #007123;
+    color: #F8F8F8;
 }
 
 #language {
     width: 100%;
     font-size: 120%;
+    background-color: #69220d;
+    color: #F8F8F8;
+}
+
+#exercise{
+    position: absolute;
+    top: 0;
+    right: 70%;
+    bottom: 0;
+    left: 0;
+    background-color: #585454;
 }
