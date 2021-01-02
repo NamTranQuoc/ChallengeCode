@@ -75,11 +75,10 @@ public class ConnectSSH {
                result += str;
             }
             if(channel.isClosed()){
-               String str = "exit-status: " + channel.getExitStatus();
-               result += str;
+               if (result.equals(""))
+                  result = "Error!!!";
                break;
             }
-            try{Thread.sleep(1000);}catch(Exception ee){}
          }
          channel.disconnect();
          session.disconnect();

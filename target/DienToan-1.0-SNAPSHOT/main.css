@@ -41,7 +41,8 @@
     display: flex;
     margin-right: 1%;
     width: 10%;
-    margin-top: 0.1%
+    margin-top: 0.1%;
+    margin-bottom: 0.1%;
 }
 
 #btn-compile {
@@ -77,12 +78,58 @@
     margin: -76px 0 0 -76px;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #3498db;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    border-top: 16px solid #212223;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+#exercise {
+    display: flex;
+    flex-direction: column;
+}
+
+#exercise > div{
+    margin-top: 10%;
+    text-align: center;
+}
+
+#select__part {
+    height: 5%;
+}
+
+#part {
+    height: 100%;
+    width: 30%;
+    background-color: #655107;
+    color: #F8F8F8;
+    font-size: 120%;
+}
+
+#div__desc {
+    height: 40%;
+}
+
+#desc {
+    height: 100%;
+    width:97%;
+    background-color: #797979;
+    color: #F8F8F8;
+    font-size: 120%;
+}
+
+#div__in__out {
+    max-height: 40%;
+}
+
+#div__in__out > table, th, tr, td {
+    height: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #464646;
+    color: #F8F8F8;
 }
