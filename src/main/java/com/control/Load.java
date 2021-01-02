@@ -16,11 +16,14 @@ import java.util.List;
 public class Load extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      resp.setContentType("text/html;charset=UTF-8");
+      req.setCharacterEncoding("utf-8");
+
       PrintWriter out = resp.getWriter();
 
       String result = "";
-      List<Exercise> exercises = CreateDb.getInstance().create();
-      for (Exercise e: exercises) {
+      CreateDb.getInstance().create();
+      for (Exercise e: CreateDb.exercises) {
          result += "<option value=\"" + e.getId() + "\">Bài " + e.getId() + "</option>";
       }
 

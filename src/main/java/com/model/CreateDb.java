@@ -16,15 +16,26 @@ public class CreateDb {
       return instance;
    }
 
-   public List<Exercise> create() {
-      List<Exercise> exercises = new ArrayList<>();
+   public static List<Exercise> exercises;
 
-      Exercise exercise1 = new Exercise(1L, "abc", "1 2 3", "2");
+   public void create() {
+      exercises = new ArrayList<>();
+
+      Exercise exercise1 = new Exercise(1L, "Bạn hãy viết chương trình hiển thị ra màn hình dòng chữ: Hello World!!", "", "Hello World!!");
       exercises.add(exercise1);
 
-      Exercise exercise2 = new Exercise(2L, "xyz", "7\n8\n9", "3 3");
+      Exercise exercise2 = new Exercise(2L, "xyz", "7 8 9", "3 3");
       exercises.add(exercise2);
+   }
 
-      return exercises;
+   public Exercise getById(Long id) {
+      Exercise exercise = null;
+      for (Exercise e: exercises) {
+         if (e.getId() == id) {
+            exercise = e;
+            break;
+         }
+      }
+      return exercise;
    }
 }

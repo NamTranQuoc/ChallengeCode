@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 public class Compile extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      resp.setContentType("text/html;charset=UTF-8");
+      req.setCharacterEncoding("utf-8");
+
       PrintWriter out = resp.getWriter();
 
       String code = req.getParameter("code");
@@ -20,7 +23,6 @@ public class Compile extends HttpServlet {
       String result = "";
       result = ConnectSSH.getInstance().ExecuteCmd(code, language);
 
-      req.setAttribute("result", result);
       out.write(result);
    }
 

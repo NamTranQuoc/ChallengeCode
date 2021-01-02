@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <title>Challenge</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="main.css">
 </head>
 <body onload="load()">
@@ -72,7 +72,7 @@
       enableLiveAutocompletion: true
     });
 </script>
-<script type="text/javascript" charset="utf-8">
+<script charset="utf-8">
   $(document).ready(function() {
     $('#btn-compile').click(function(e) {
       e.preventDefault();
@@ -107,8 +107,9 @@
       }
     }
 </script>
-<script type="text/javascript" charset="utf-8">
+<script charset="utf-8">
     function load() {
+      loadDesc();
       $.ajax({
         method:"POST",
         url:"/load",
@@ -118,5 +119,28 @@
       })
     }
 </script>
+
+<script charset="utf-8">
+  function loadDesc() {
+    $.ajax({
+      method:"POST",
+      url:"/change",
+      data: {
+        id: $('#part').val()
+      },
+      success: function (data) {
+        let result = $.parseJSON(data);
+        console.log(result[0].desc);
+        $('#in-out').find('td').remove();
+        $('#desc').val(result[0].desc);
+        let html =
+            '<td>' + result[0].in + '</td>' +
+            '<td>' + result[0].out + '</td>';
+        $('#in-out').append(html);
+      }
+    })
+  }
+</script>
+
 </body>
 </html>
