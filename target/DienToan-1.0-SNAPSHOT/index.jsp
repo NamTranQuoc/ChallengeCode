@@ -11,14 +11,13 @@
 <form id="compile-form">
     <div id="exercise">
         <div id="select__part">
-            <select id="part">
+            <select id="part" onchange="loadDesc()">
                 <!--<option value="1">Bài 1</option>
                 <option value="2">Bài 2</option>-->
-                <tbody id="__part"></tbody>
             </select>
         </div>
         <div id="div__desc">
-            <textarea name="result" id="desc" readonly style="resize: none;"></textarea>
+            <textarea name="result" id="desc" readonly style="resize: none;">bài</textarea>
         </div>
         <div id="div__in__out">
             <table style="width: 100%">
@@ -114,8 +113,7 @@
         method:"POST",
         url:"/load",
         success: function (data) {
-          $('#__part').append(data.toString());
-          alert(data.toString())
+          $('#part').append(data.toString());
         }
       })
     }
