@@ -21,7 +21,12 @@ public class ChangeExercise extends HttpServlet {
       PrintWriter out = resp.getWriter();
 
       String result = "";
-      Long id = Long.parseLong(req.getParameter("id"));
+      Long id;
+      try {
+         id = Long.parseLong(req.getParameter("id"));
+      } catch (Exception e) {
+         id = 1L;
+      }
       Exercise exercise = CreateDb.getInstance().getById(id);
       result = "[{" +
               "\"desc\":\"" + exercise.getDesc() + "\"," +

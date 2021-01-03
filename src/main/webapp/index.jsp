@@ -109,12 +109,12 @@
 </script>
 <script charset="utf-8">
     function load() {
-      loadDesc();
       $.ajax({
         method:"POST",
         url:"/load",
         success: function (data) {
           $('#part').append(data.toString());
+          loadDesc();
         }
       })
     }
