@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="main.css">
 </head>
-<body onload="load()">
+<body onloadstart="load()">
 <form id="compile-form">
     <div id="exercise">
         <div id="select__part">
