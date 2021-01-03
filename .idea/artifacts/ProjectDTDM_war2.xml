@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProjectDTDM:war2">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjectDTDM_war2</output-path>
+    <root id="archive" name="ProjectDTDM_war.war">
+      <element id="artifact" artifact-name="ProjectDTDM:war exploded" />
+    </root>
+  </artifact>
+</component>
